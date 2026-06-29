@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thời khóa biểu Sigma - Hình học Đại số</title>
+  <style>
+    :root {
+      --blue-50: #E6F1FB; --blue-800: #0C447C;
+      --purple-50: #EEEDFE; --purple-800: #3C3489;
+      --teal-50: #E1F5EE; --teal-800: #085041;
+      --coral-50: #FAECE7; --coral-800: #993C1D;
+      --green-50: #EAF3DE; --green-800: #3B6D11;
+      --amber-50: #FAEEDA; --amber-800: #854F0B;
+      --pink-50: #FBEAF0; --pink-800: #993556;
+      --gray-50: #F4F3F0; --gray-200: #D3D1C7; --gray-600: #5F5E5A; --gray-900: #1a1a18;
+      --border: rgba(0,0,0,0.10); --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f6f2; color: var(--gray-900); min-height: 100vh; padding: 2rem 1rem 4rem; }
+    .page { max-width: 860px; margin: 0 auto; }
+    .site-header { margin-bottom: 2.5rem; text-align: center; }
+    .site-header h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 600; letter-spacing: -0.03em; color: var(--gray-900); line-height: 1.2; }
+    .site-header .meta { margin-top: 8px; font-size: 15px; color: var(--gray-600); display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center; }
+    .badge-viasm { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; letter-spacing: 0.04em; background: var(--blue-50); color: var(--blue-800); border: 1px solid rgba(55,138,221,0.25); }
+    .structure-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 10px; }
+    .structure-card h2 { font-size: 13px; font-weight: 600; color: var(--gray-600); letter-spacing: 0.04em; text-transform: uppercase; }
+    .session-bar { display: flex; gap: 4px; align-items: stretch; height: 40px; }
+    .sbar-block { border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-direction: column; font-size: 11px; font-weight: 500; gap: 1px; }
+    .sbar-block .sbar-time { font-size: 10px; font-weight: 400; opacity: 0.75; }
+    .sbar-talk { background: var(--gray-50); border: 1px solid var(--gray-200); color: var(--gray-600); flex: 75; }
+    .sbar-tea { background: var(--amber-50); color: var(--amber-800); border: 1px solid rgba(186,117,23,0.2); flex: 15; }
+    .sbar-talk2 { background: var(--gray-50); border: 1px solid var(--gray-200); color: var(--gray-600); flex: 60; }
+    .session-row-label { font-size: 12px; font-weight: 500; color: var(--gray-600); min-width: 55px; display: flex; align-items: center; }
+    .session-bar-wrap { display: flex; gap: 10px; align-items: center; }
+    .schedule-table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .schedule-table th { background: var(--gray-50); font-size: 12px; font-weight: 600; color: var(--gray-600); padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); letter-spacing: 0.02em; }
+    .schedule-table th:not(:last-child) { border-right: 1px solid var(--border); }
+    .schedule-table td { padding: 14px; vertical-align: top; border-bottom: 1px solid var(--border); }
+    .schedule-table td:not(:last-child) { border-right: 1px solid var(--border); }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .td-date { width: 80px; background: var(--gray-50); }
+    .date-main { font-size: 14px; font-weight: 600; color: var(--gray-900); }
+    .date-day { font-size: 11px; color: var(--gray-600); margin-top: 2px; }
+    .chapter-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; margin-bottom: 5px; }
+    .session-title { font-size: 14px; font-weight: 500; color: var(--gray-900); line-height: 1.35; }
+    .session-members { font-size: 12px; color: var(--gray-600); margin-top: 4px; }
+    .time-bar { display: flex; align-items: center; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
+    .tb-block { font-size: 10px; font-weight: 500; padding: 2px 6px; border-radius: 4px; }
+    .tb-talk { background: var(--gray-50); border: 1px solid var(--gray-200); color: var(--gray-600); }
+    .tb-tea { background: var(--amber-50); color: var(--amber-800); }
+    .tb-sep { color: var(--gray-200); font-size: 12px; }
+    .c-g1 { background: var(--blue-50); color: var(--blue-800); }
+    .c-g2 { background: var(--purple-50); color: var(--purple-800); }
+    .c-g3 { background: var(--teal-50); color: var(--teal-800); }
+    .c-g4 { background: var(--coral-50); color: var(--coral-800); }
+    .c-g5 { background: var(--green-50); color: var(--green-800); }
+    .c-g5b { background: var(--amber-50); color: var(--amber-800); }
+    .c-g6 { background: var(--pink-50); color: var(--pink-800); }
+    .legend { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 8px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-600); background: white; border: 1px solid var(--border); border-radius: 20px; padding: 4px 10px; }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .site-footer { margin-top: 2rem; font-size: 12px; color: var(--gray-600); display: flex; flex-direction: column; gap: 5px; }
+    .note { display: flex; align-items: flex-start; gap: 6px; }
+    @media (max-width: 600px) {
+      .schedule-table th:nth-child(3), .schedule-table td:nth-child(3) { display: none; }
+      body { padding: 1rem 0.75rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="site-header">
+    <div style="margin-bottom: 10px;"><span class="badge-viasm">VIASM - Seminar Sigma 2026</span></div>
+    <h1>Thời khóa biểu Sigma - Hình học Đại số</h1>
+    <div class="meta">
+      <span>📅 11 - 18/08/2026</span>
+      <span>📍 Đà Nẵng</span>
+    </div>
+  </header>
+
+  <div class="structure-card">
+    <h2>Cấu trúc mỗi buổi</h2>
+    <div class="session-bar-wrap">
+      <span class="session-row-label">Sáng</span>
+      <div class="session-bar" style="flex:1">
+        <div class="sbar-block sbar-talk"><span>Talk 1</span><span class="sbar-time">9:00-10:15</span></div>
+        <div class="sbar-block sbar-tea"><span>☕</span><span class="sbar-time">10:15-10:30</span></div>
+        <div class="sbar-block sbar-talk2"><span>Talk 2</span><span class="sbar-time">10:30-11:30</span></div>
+      </div>
+    </div>
+    <div class="session-bar-wrap">
+      <span class="session-row-label">Chiều</span>
+      <div class="session-bar" style="flex:1">
+        <div class="sbar-block sbar-talk"><span>Talk 1</span><span class="sbar-time">15:00-16:15</span></div>
+        <div class="sbar-block sbar-tea"><span>☕</span><span class="sbar-time">16:15-16:30</span></div>
+        <div class="sbar-block sbar-talk2"><span>Talk 2</span><span class="sbar-time">16:30-17:30</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#B5D4F4"></div>Nhóm 1 - Bùi Quốc, Mai Quốc Anh</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#CECBF6"></div>Nhóm 2 - Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#9FE1CB"></div>Nhóm 3 - Phạm Đức Thành, Nguyễn Trần Tiến</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#F5C4B3"></div>Nhóm 4 - Trần Anh Vin, Ngô Công Dũng</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#C0DD97"></div>Nhóm 5 - Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#F4C0D1"></div>Nhóm 6 - Phan Quốc Thắng, Hoàng Huyền Trang</div>
+  </div>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Ngày</th>
+        <th>Buổi sáng, 9:00-11:30</th>
+        <th>Buổi chiều, 15:00-17:30</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="td-date"><div class="date-main">11/8</div><div class="date-day">Thứ hai</div></td>
+        <td>
+          <div class="chapter-pill c-g1">Chương 1 / Nhóm 1</div>
+          <div class="session-title">Sơ lược về vành và module</div>
+          <div class="session-members">Bùi Quốc, Mai Quốc Anh</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g1">Chương 1 / Nhóm 1</div>
+          <div class="session-title">Sơ lược về vành và module (tiếp theo)</div>
+          <div class="session-members">Bùi Quốc, Mai Quốc Anh</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">12/8</div><div class="date-day">Thứ ba</div></td>
+        <td>
+          <div class="chapter-pill c-g2">Chương 2 / Nhóm 2</div>
+          <div class="session-title">Đa tạp đại số và vành giao hoán</div>
+          <div class="session-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g2">Chương 2 / Nhóm 2</div>
+          <div class="session-title">Đa tạp đại số và vành giao hoán (tiếp theo)</div>
+          <div class="session-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">13/8</div><div class="date-day">Thứ tư</div></td>
+        <td>
+          <div class="chapter-pill c-g3">Chương 3 / Nhóm 3</div>
+          <div class="session-title">Phần tử nguyên</div>
+          <div class="session-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g3">Chương 3 / Nhóm 3</div>
+          <div class="session-title">Phần tử nguyên (tiếp theo)</div>
+          <div class="session-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">14/8</div><div class="date-day">Thứ năm</div></td>
+        <td>
+          <div class="chapter-pill c-g4">Chương 4 / Nhóm 4</div>
+          <div class="session-title">Vành Noether</div>
+          <div class="session-members">Trần Anh Vin, Ngô Công Dũng</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g4">Chương 4 / Nhóm 4</div>
+          <div class="session-title">Vành Noether (tiếp theo)</div>
+          <div class="session-members">Trần Anh Vin, Ngô Công Dũng</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">15/8</div><div class="date-day">Thứ sáu</div></td>
+        <td>
+          <div class="chapter-pill c-g5">Chương 5 / Nhóm 5</div>
+          <div class="session-title">Vành định giá rời rạc</div>
+          <div class="session-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g5">Chương 5 / Nhóm 5</div>
+          <div class="session-title">Vành định giá rời rạc (tiếp theo)</div>
+          <div class="session-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">16/8</div><div class="date-day">Thứ bảy</div></td>
+        <td>
+          <div class="chapter-pill c-g5b">Chương 6 / Nhóm 5</div>
+          <div class="session-title">Số chiều và độ sâu</div>
+          <div class="session-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g5b">Chương 6 / Nhóm 5</div>
+          <div class="session-title">Số chiều và độ sâu (tiếp theo)</div>
+          <div class="session-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">17/8</div><div class="date-day">Chủ nhật</div></td>
+        <td>
+          <div class="chapter-pill c-g6">Chương 7 / Nhóm 6</div>
+          <div class="session-title">Vi phân và đạo hàm</div>
+          <div class="session-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g6">Chương 7 / Nhóm 6</div>
+          <div class="session-title">Vi phân và đạo hàm (tiếp theo)</div>
+          <div class="session-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">18/8</div><div class="date-day">Thứ hai</div></td>
+        <td>
+          <div class="chapter-pill c-g1">Chương 8 / Nhóm 1</div>
+          <div class="session-title">Bó và lược đồ</div>
+          <div class="session-members">Bùi Quốc, Mai Quốc Anh</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">9:00-10:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 10:15-10:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">10:30-11:30</span>
+          </div>
+        </td>
+        <td>
+          <div class="chapter-pill c-g1">Chương 8 / Nhóm 1</div>
+          <div class="session-title">Bó và lược đồ (tiếp theo)</div>
+          <div class="session-members">Bùi Quốc, Mai Quốc Anh</div>
+          <div class="time-bar">
+            <span class="tb-block tb-talk">15:00-16:15</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-tea">☕ 16:15-16:30</span>
+            <span class="tb-sep">/</span>
+            <span class="tb-block tb-talk">16:30-17:30</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
