@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thời khóa biểu Sigma - Hình học Đại số</title>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Thời khóa biểu Sigma 2026 - Hình học Đại số" />
+  <meta property="og:description" content="Seminar Sigma 2026, VIASM · 11-17/08/2026 · Hội An, Đà Nẵng" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="description" content="Thời khóa biểu Seminar Sigma 2026 - Hình học Đại số, 11-17/08/2026 tại Hội An, Đà Nẵng." />
+
   <style>
     :root {
       --blue-50: #E6F1FB; --blue-800: #0C447C;
@@ -69,6 +76,10 @@
       background: var(--gray-50); border: 1px solid var(--gray-200);
       color: var(--gray-600); flex: 60; border-radius: 0 7px 7px 0;
     }
+    .structure-note {
+      margin-top: 12px; font-size: 11px; color: var(--gray-600);
+      text-align: center; line-height: 1.5;
+    }
 
     table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; font-size: 12px; }
     thead th { background: var(--gray-50); font-size: 11px; font-weight: 600; color: var(--gray-600); padding: 9px 10px; text-align: center; border-bottom: 1px solid var(--border); letter-spacing: 0.02em; }
@@ -84,8 +95,17 @@
     .slot { display: flex; flex-direction: column; gap: 4px; }
     .pill { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 7px; border-radius: 20px; width: fit-content; }
     .slot-title { font-size: 12px; font-weight: 500; color: var(--gray-900); line-height: 1.35; }
-
     .slot-members { font-size: 10px; color: var(--gray-600); margin-top: 2px; font-style: italic; }
+
+    /* Ngày đặc biệt: bài giảng cả ngày */
+    .row-special .td-date { background: var(--coral-50); }
+    .row-special .date-day { color: var(--coral-800); }
+    .td-fullday {
+      background: linear-gradient(0deg, rgba(250,236,231,0.55), rgba(250,236,231,0.55));
+      text-align: center; padding: 20px 14px;
+    }
+    .fullday-title { font-size: 14px; font-weight: 600; color: var(--coral-800); line-height: 1.4; }
+    .fullday-sub { font-size: 11px; color: var(--gray-600); margin-top: 5px; }
 
     .c1 { background: var(--blue-50); color: var(--blue-800); }
     .c2 { background: var(--purple-50); color: var(--purple-800); }
@@ -96,9 +116,33 @@
     .c7 { background: var(--pink-50); color: var(--pink-800); }
     .c8 { background: var(--blue-50); color: var(--blue-800); }
 
-    @media (max-width: 700px) {
-      thead th:nth-child(3), td:nth-child(3),
-      thead th:nth-child(5), td:nth-child(5) { display: none; }
+    .footnote { margin-top: 1.25rem; text-align: center; font-size: 11px; color: var(--gray-600); }
+
+    /* Điện thoại: mỗi ngày thành một thẻ, không giấu cột nào */
+    @media (max-width: 760px) {
+      body { padding: 1.25rem 0.75rem 3rem; }
+      table, tbody, tr, td { display: block; width: 100%; }
+      thead { display: none; }
+      table { border: none; background: transparent; border-radius: 0; overflow: visible; }
+      tr {
+        background: white; border: 1px solid var(--border);
+        border-radius: var(--radius); margin-bottom: 12px; overflow: hidden;
+      }
+      td { border-right: none !important; padding: 12px 14px; }
+      tr:last-child td { border-bottom: 1px solid var(--border); }
+      tr td:last-child { border-bottom: none; }
+      .td-date {
+        width: 100%; display: flex; align-items: baseline; gap: 8px;
+        padding: 9px 14px;
+      }
+      .td-date .date-day { margin-top: 0; }
+      td[data-time]::before {
+        content: attr(data-time);
+        display: block; font-size: 10px; font-weight: 600;
+        color: var(--gray-600); letter-spacing: 0.04em; margin-bottom: 5px;
+      }
+      .legend-item { font-size: 10.5px; }
+      .bar-label { width: 36px; }
     }
   </style>
 </head>
@@ -151,6 +195,7 @@
         </div>
       </div>
     </div>
+    <p class="structure-note">Riêng ngày 17/8 dành trọn cho bài giảng và thảo luận với GS. Ngô Bảo Châu.</p>
   </div>
 
   <div class="legend">
@@ -175,167 +220,153 @@
     <tbody>
       <tr>
         <td class="td-date"><div class="date-main">11/8</div><div class="date-day">Thứ ba</div></td>
-        <td><div class="slot">
+        <td data-time="9:00 - 10:15"><div class="slot">
           <span class="pill c1">Ch.1 - 1A</span>
           <div class="slot-title">Vành, module, ideal và module trên PID</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="10:30 - 11:30"><div class="slot">
           <span class="pill c1">Ch.1 - 1B</span>
           <div class="slot-title">Tích tensor và địa phương hóa</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="15:00 - 16:15"><div class="slot">
           <span class="pill c2">Ch.2 - 2A</span>
-          <div class="slot-title">Tập đại số và đối ngẫu V-I</div>
+          <div class="slot-title">Tập đại số, đối ngẫu V-I và ideal căn</div>
           <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="16:30 - 17:30"><div class="slot">
           <span class="pill c2">Ch.2 - 2B</span>
-          <div class="slot-title">Ideal căn và Nullstellensatz mạnh</div>
+          <div class="slot-title">Nullstellensatz, vành tọa độ và ánh xạ đại số</div>
           <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
         </div></td>
       </tr>
       <tr>
         <td class="td-date"><div class="date-main">12/8</div><div class="date-day">Thứ tư</div></td>
-        <td><div class="slot">
+        <td data-time="9:00 - 10:15"><div class="slot">
           <span class="pill c2">Ch.2 - 2C</span>
-          <div class="slot-title">Vành tọa độ, k-điểm và ánh xạ đại số</div>
+          <div class="slot-title">Phổ cực đại, phổ nguyên tố và topo Zariski</div>
           <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
         </div></td>
-        <td><div class="slot">
-          <span class="pill c2">Ch.2 - 2D</span>
-          <div class="slot-title">Phổ cực đại và Nullstellensatz yếu</div>
-          <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
-        </div></td>
-        <td><div class="slot">
-          <span class="pill c2">Ch.2 - 2E</span>
-          <div class="slot-title">Phổ nguyên tố và topo Zariski</div>
-          <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
-        </div></td>
-        <td><div class="slot">
+        <td data-time="10:30 - 11:30"><div class="slot">
           <span class="pill c3">Ch.3 - 3A</span>
           <div class="slot-title">Hai tính hữu hạn, Cayley-Hamilton và Nakayama</div>
+          <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
+        </div></td>
+        <td data-time="15:00 - 16:15"><div class="slot">
+          <span class="pill c3">Ch.3 - 3B</span>
+          <div class="slot-title">Phần tử nguyên và bổ đề Zariski</div>
+          <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
+        </div></td>
+        <td data-time="16:30 - 17:30"><div class="slot">
+          <span class="pill c3">Ch.3 - 3C</span>
+          <div class="slot-title">Miền chuẩn, going-up/down và định lý chính Zariski</div>
           <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
         </div></td>
       </tr>
       <tr>
         <td class="td-date"><div class="date-main">13/8</div><div class="date-day">Thứ năm</div></td>
-        <td><div class="slot">
-          <span class="pill c3">Ch.3 - 3B</span>
-          <div class="slot-title">Phần tử nguyên và bổ đề Zariski</div>
-          <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
-        </div></td>
-        <td><div class="slot">
-          <span class="pill c3">Ch.3 - 3C</span>
-          <div class="slot-title">Miền chuẩn, going-up/down và định lý chính Zariski</div>
-          <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
-        </div></td>
-        <td><div class="slot">
+        <td data-time="9:00 - 10:15"><div class="slot">
           <span class="pill c4">Ch.4 - 4A</span>
           <div class="slot-title">Vành Noether và định lý cơ sở Hilbert</div>
           <div class="slot-members">Trần Anh Vin, Ngô Công Dũng</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="10:30 - 11:30"><div class="slot">
           <span class="pill c4">Ch.4 - 4B</span>
           <div class="slot-title">Topo I-adic, đầy đủ hóa và Artin-Rees</div>
           <div class="slot-members">Trần Anh Vin, Ngô Công Dũng</div>
         </div></td>
-      </tr>
-      <tr>
-        <td class="td-date"><div class="date-main">14/8</div><div class="date-day">Thứ sáu</div></td>
-        <td><div class="slot">
+        <td data-time="15:00 - 16:15"><div class="slot">
           <span class="pill c4">Ch.4 - 4C</span>
           <div class="slot-title">Ideal nguyên tố liên kết</div>
           <div class="slot-members">Trần Anh Vin, Ngô Công Dũng</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="16:30 - 17:30"><div class="slot">
           <span class="pill c5">Ch.5 - 5A</span>
           <div class="slot-title">Định giá rời rạc và DVR</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
-        <td><div class="slot">
+      </tr>
+      <tr>
+        <td class="td-date"><div class="date-main">14/8</div><div class="date-day">Thứ sáu</div></td>
+        <td data-time="9:00 - 10:15"><div class="slot">
           <span class="pill c5">Ch.5 - 5B</span>
-          <div class="slot-title">DVR chiều một, Hartogs đại số và miền Dedekind</div>
+          <div class="slot-title">Đặc trưng DVR chiều một và Hartogs đại số</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="10:30 - 11:30"><div class="slot">
+          <span class="pill c5">Ch.5 - 5C</span>
+          <div class="slot-title">Miền Dedekind</div>
+          <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+        </div></td>
+        <td data-time="15:00 - 16:15"><div class="slot">
           <span class="pill c6">Ch.6 - 6A</span>
-          <div class="slot-title">Chiều Krull, chieu dia phuong</div>
+          <div class="slot-title">Chiều Krull và chiều địa phương</div>
+          <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+        </div></td>
+        <td data-time="16:30 - 17:30"><div class="slot">
+          <span class="pill c6">Ch.6 - 6B</span>
+          <div class="slot-title">Hàm và đa thức Hilbert-Samuel</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
       </tr>
       <tr>
         <td class="td-date"><div class="date-main">15/8</div><div class="date-day">Thứ bảy</div></td>
-        <td><div class="slot">
-          <span class="pill c6">Ch.6 - 6B</span>
-          <div class="slot-title">Hàm và đa thức Hilbert-Samuel</div>
-          <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
-        </div></td>
-        <td><div class="slot">
+        <td data-time="9:00 - 10:15"><div class="slot">
           <span class="pill c6">Ch.6 - 6C</span>
-          <div class="slot-title">Hệ tham số, dãy chuẩn, độ sâu và Cohen-Macaulay</div>
+          <div class="slot-title">Hệ tham số, dãy chính quy, độ sâu và Cohen-Macaulay</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="10:30 - 11:30"><div class="slot">
           <span class="pill c7">Ch.7 - 7A</span>
-          <div class="slot-title">Vector tiếp xúc và đối tiếp xúc</div>
+          <div class="slot-title">Vector tiếp xúc, đối tiếp xúc và module vi phân Kähler</div>
           <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="15:00 - 16:15"><div class="slot">
           <span class="pill c7">Ch.7 - 7B</span>
-          <div class="slot-title">Module vi phân Kähler và trường hợp đại số đa thức</div>
+          <div class="slot-title">Đại số đa thức, vành thương và hai dãy khớp</div>
+          <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
+        </div></td>
+        <td data-time="16:30 - 17:30"><div class="slot">
+          <span class="pill c7">Ch.7 - 7C</span>
+          <div class="slot-title">Jacobian, mở rộng trường, unramified, smooth và étale</div>
           <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
         </div></td>
       </tr>
       <tr>
         <td class="td-date"><div class="date-main">16/8</div><div class="date-day">Chủ nhật</div></td>
-        <td><div class="slot">
-          <span class="pill c7">Ch.7 - 7C</span>
-          <div class="slot-title">Vành thương, hai dãy khớp, Jacobian và mở rộng trường</div>
-          <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
-        </div></td>
-        <td><div class="slot">
-          <span class="pill c7">Ch.7 - 7D</span>
-          <div class="slot-title">Phân nhánh, unramified, smooth và étale</div>
-          <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
-        </div></td>
-        <td><div class="slot">
+        <td data-time="9:00 - 10:15"><div class="slot">
           <span class="pill c8">Ch.8 - 8A</span>
-          <div class="slot-title">Dán không gian, tiền bó và bó</div>
+          <div class="slot-title">Dán không gian, tiền bó, bó và bó cấu trúc</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="10:30 - 11:30"><div class="slot">
           <span class="pill c8">Ch.8 - 8B</span>
-          <div class="slot-title">Bó cấu trúc và lược đồ affine</div>
+          <div class="slot-title">Lược đồ affine, lược đồ, cấu xạ và tính tách</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-      </tr>
-      <tr>
-        <td class="td-date"><div class="date-main">17/8</div><div class="date-day">Thứ hai</div></td>
-        <td><div class="slot">
+        <td data-time="15:00 - 16:15"><div class="slot">
           <span class="pill c8">Ch.8 - 8C</span>
-          <div class="slot-title">Lược đồ, cấu xạ và tính tách</div>
+          <div class="slot-title">Bó cận nhất quán, vành phân bậc, Proj và O(d)</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-        <td><div class="slot">
+        <td data-time="16:30 - 17:30"><div class="slot">
           <span class="pill c8">Ch.8 - 8D</span>
-          <div class="slot-title">Bó cận nhất quán và không gian xạ ảnh bằng phép dán</div>
-          <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
-        </div></td>
-        <td><div class="slot">
-          <span class="pill c8">Ch.8 - 8E</span>
-          <div class="slot-title">Vành phân bậc, Proj và O(d)</div>
-          <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
-        </div></td>
-        <td><div class="slot">
-          <span class="pill c8">Ch.8 - 8F</span>
           <div class="slot-title">Yoneda, hàm tử điểm, không gian xạ ảnh và Grassmannian</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
       </tr>
+      <tr class="row-special">
+        <td class="td-date"><div class="date-main">17/8</div><div class="date-day">Thứ hai</div></td>
+        <td class="td-fullday" colspan="4" data-time="Cả ngày">
+          <div class="fullday-title">Bài giảng và thảo luận với GS. Ngô Bảo Châu</div>
+          <div class="fullday-sub">Cả ngày</div>
+        </td>
+      </tr>
     </tbody>
   </table>
+
+  <p class="footnote">Cập nhật ngày 02/08/2026</p>
 </div>
 </body>
 </html>
