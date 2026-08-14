@@ -115,6 +115,8 @@
     .c6 { background: var(--amber-50); color: var(--amber-800); }
     .c7 { background: var(--pink-50); color: var(--pink-800); }
     .c8 { background: var(--blue-50); color: var(--blue-800); }
+    .c0 { background: var(--gray-50); color: var(--gray-600); border: 1px solid var(--gray-200); }
+    .cguest { background: var(--gray-900); color: #fff; }
 
 
     /* Điện thoại: mỗi ngày thành một thẻ, không giấu cột nào */
@@ -181,15 +183,15 @@
         <div class="session-bar">
           <div class="sbar-block sbar-talk">
             <span class="sbar-label">Talk 3</span>
-            <span class="sbar-time">15:00 - 16:15</span>
+            <span class="sbar-time">14:30 - 15:45</span>
           </div>
           <div class="sbar-block sbar-tea">
             <span class="sbar-label">☕</span>
-            <span class="sbar-time">16:15 - 16:30</span>
+            <span class="sbar-time">15:45 - 16:00</span>
           </div>
           <div class="sbar-block sbar-talk2">
             <span class="sbar-label">Talk 4</span>
-            <span class="sbar-time">16:30 - 17:30</span>
+            <span class="sbar-time">16:00 - 17:00</span>
           </div>
         </div>
       </div>
@@ -212,12 +214,12 @@
         <th>Ngày</th>
         <th>9:00-10:15</th>
         <th>10:30-11:30</th>
-        <th>15:00-16:15</th>
-        <th>16:30-17:30</th>
+        <th>14:30-15:45</th>
+        <th>16:00-17:00</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+                              <tr>
         <td class="td-date"><div class="date-main">11/8</div><div class="date-day">Thứ ba</div></td>
         <td data-time="9:00 - 10:15"><div class="slot">
           <span class="pill c1">Ch.1 - 1A</span>
@@ -229,22 +231,21 @@
           <div class="slot-title">Tensor và địa phương hóa</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-        <td data-time="15:00 - 16:15"><div class="slot">
+        <td data-time="14:30 - 15:45"><div class="slot">
           <span class="pill c2">Ch.2 - 2A</span>
-          <div class="slot-title">Tập đại số và định lý ideal căn</div>
+          <div class="slot-title">Tập đại số, định lý ideal căn và vành tọa độ</div>
           <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
         </div></td>
-        <td data-time="16:30 - 17:30"><div class="slot">
-          <span class="pill c2">Ch.2 - 2B</span>
-          <div class="slot-title">Vành tọa độ, k-điểm và phổ cực đại</div>
-          <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
+        <td data-time="16:00 - 17:00"><div class="slot">
+          <span class="pill cguest">Bài giảng 1</span>
+          <div class="slot-title">Bài giảng của thầy Đào Hải Long</div>
         </div></td>
       </tr>
       <tr>
         <td class="td-date"><div class="date-main">12/8</div><div class="date-day">Thứ tư</div></td>
         <td data-time="9:00 - 10:15"><div class="slot">
-          <span class="pill c2">Ch.2 - 2C</span>
-          <div class="slot-title">Phổ nguyên tố và topo Zariski</div>
+          <span class="pill c2">Ch.2 - 2B</span>
+          <div class="slot-title">k-điểm, phổ cực đại, phổ nguyên tố và topo Zariski</div>
           <div class="slot-members">Nguyễn Trí Đạt, Đinh Vũ Tùng Lâm</div>
         </div></td>
         <td data-time="10:30 - 11:30"><div class="slot">
@@ -252,15 +253,14 @@
           <div class="slot-title">Hai tính hữu hạn, Cayley-Hamilton và Nakayama</div>
           <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
         </div></td>
-        <td data-time="15:00 - 16:15"><div class="slot">
+        <td data-time="14:30 - 15:45"><div class="slot">
           <span class="pill c3">Ch.3 - 3B</span>
-          <div class="slot-title">Phần tử nguyên và bổ đề Zariski</div>
+          <div class="slot-title">Phần tử nguyên, bổ đề Zariski, vành chuẩn và phổ của mở rộng nguyên</div>
           <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
         </div></td>
-        <td data-time="16:30 - 17:30"><div class="slot">
-          <span class="pill c3">Ch.3 - 3C</span>
-          <div class="slot-title">Vành chuẩn và phổ của mở rộng nguyên</div>
-          <div class="slot-members">Phạm Đức Thành, Nguyễn Trần Tiến</div>
+        <td data-time="16:00 - 17:00"><div class="slot">
+          <span class="pill cguest">Bài giảng 2</span>
+          <div class="slot-title">Bài giảng của thầy Đào Hải Long</div>
         </div></td>
       </tr>
       <tr>
@@ -275,61 +275,59 @@
           <div class="slot-title">Đầy đủ hóa và Artin-Rees</div>
           <div class="slot-members">Trần Anh Vin, Ngô Công Dũng</div>
         </div></td>
-        <td data-time="15:00 - 16:15"><div class="slot">
+        <td data-time="14:30 - 15:45"><div class="slot">
           <span class="pill c4">Ch.4 - 4C</span>
           <div class="slot-title">Ideal nguyên tố liên kết</div>
           <div class="slot-members">Trần Anh Vin, Ngô Công Dũng</div>
         </div></td>
-        <td data-time="16:30 - 17:30"><div class="slot">
-          <span class="pill c5">Ch.5 - 5A</span>
-          <div class="slot-title">Định giá rời rạc và DVR</div>
-          <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
+        <td data-time="16:00 - 17:00"><div class="slot">
+          <span class="pill cguest">Bài giảng 3</span>
+          <div class="slot-title">Bài giảng của thầy Đào Hải Long</div>
         </div></td>
       </tr>
       <tr>
         <td class="td-date"><div class="date-main">14/8</div><div class="date-day">Thứ sáu</div></td>
         <td data-time="9:00 - 10:15"><div class="slot">
-          <span class="pill c5">Ch.5 - 5B</span>
-          <div class="slot-title">DVR đầy đủ và tiêu chuẩn chiều một</div>
+          <span class="pill c5">Ch.5 - 5A</span>
+          <div class="slot-title">Định giá rời rạc, DVR và DVR đầy đủ</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
         <td data-time="10:30 - 11:30"><div class="slot">
-          <span class="pill c5">Ch.5 - 5C</span>
-          <div class="slot-title">Hartogs đại số và miền Dedekind</div>
+          <span class="pill c5">Ch.5 - 5B</span>
+          <div class="slot-title">Tiêu chuẩn chiều một, Hartogs đại số và miền Dedekind</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
-        <td data-time="15:00 - 16:15"><div class="slot">
+        <td data-time="14:30 - 15:45"><div class="slot">
           <span class="pill c6">Ch.6 - 6A</span>
-          <div class="slot-title">Chiều Krull và bậc siêu việt</div>
+          <div class="slot-title">Chiều Krull, bậc siêu việt và Hilbert-Samuel</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
-        <td data-time="16:30 - 17:30"><div class="slot">
+        <td data-time="16:00 - 17:00"><div class="slot">
           <span class="pill c6">Ch.6 - 6B</span>
-          <div class="slot-title">Hilbert-Samuel và hệ tham số</div>
+          <div class="slot-title">Hệ tham số, dãy chính quy, độ sâu và Cohen-Macaulay</div>
           <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
         </div></td>
       </tr>
       <tr>
         <td class="td-date"><div class="date-main">15/8</div><div class="date-day">Thứ bảy</div></td>
         <td data-time="9:00 - 10:15"><div class="slot">
-          <span class="pill c6">Ch.6 - 6C</span>
-          <div class="slot-title">Dãy chính quy, độ sâu và Cohen-Macaulay</div>
-          <div class="slot-members">Hoàng Tuấn Dũng, Nguyễn Vĩ Thanh Quang</div>
-        </div></td>
-        <td data-time="10:30 - 11:30"><div class="slot">
           <span class="pill c7">Ch.7 - 7A</span>
           <div class="slot-title">Vector tiếp xúc và vi phân Kähler</div>
           <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
         </div></td>
-        <td data-time="15:00 - 16:15"><div class="slot">
+        <td data-time="10:30 - 11:30"><div class="slot">
           <span class="pill c7">Ch.7 - 7B</span>
           <div class="slot-title">Tính module vi phân và Jacobian</div>
           <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
         </div></td>
-        <td data-time="16:30 - 17:30"><div class="slot">
+        <td data-time="14:30 - 15:45"><div class="slot">
           <span class="pill c7">Ch.7 - 7C</span>
           <div class="slot-title">Mở rộng trường, phân nhánh, smooth và étale</div>
           <div class="slot-members">Phan Quốc Thắng, Hoàng Huyền Trang</div>
+        </div></td>
+        <td data-time="16:00 - 17:00"><div class="slot">
+          <span class="pill c0">Tự do</span>
+          <div class="slot-title">Thảo luận &amp; bài tập</div>
         </div></td>
       </tr>
       <tr>
@@ -344,12 +342,12 @@
           <div class="slot-title">Bó cấu trúc và định nghĩa lược đồ</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-        <td data-time="15:00 - 16:15"><div class="slot">
+        <td data-time="14:30 - 15:45"><div class="slot">
           <span class="pill c8">Ch.8 - 8C</span>
           <div class="slot-title">Không gian xạ ảnh và Proj</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
         </div></td>
-        <td data-time="16:30 - 17:30"><div class="slot">
+        <td data-time="16:00 - 17:00"><div class="slot">
           <span class="pill c8">Ch.8 - 8D</span>
           <div class="slot-title">Cấu xạ, Yoneda và các không gian tham số</div>
           <div class="slot-members">Bùi Quốc, Mai Quốc Anh</div>
